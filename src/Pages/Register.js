@@ -22,6 +22,7 @@ const Register = ({addUser}) => {
         }
         
         addUser({userName, password, email, firstname, lastname, hometown})
+        window.location.href = '/'
 
         setUserName('')
         setPassword('')

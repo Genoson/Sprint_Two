@@ -10,7 +10,7 @@ import Settings from "./Pages/Settings";
 
 function App() {
   const [userList, setUserList] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState({});
+  const [userLoggedIn, setUserLoggedIn] = useState([]);
 
   useEffect(() => {
     const userList = JSON.parse(localStorage.getItem("userList"));

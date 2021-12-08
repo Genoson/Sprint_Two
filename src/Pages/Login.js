@@ -2,27 +2,44 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const Login = ({ userList, setUserLoggedIn }) => {
+const Login = (props) => {
   const [usernameTry, setUsernameTry] = useState("");
   const [passwordTry, setPasswordTry] = useState("");
 
   const handleSubmit = (e) => {
-    console.log(userList);
-    console.log(usernameTry);
-    console.log(passwordTry);
+    // console.log(userList);
+    // console.log(usernameTry);
+    // console.log(passwordTry);
     e.preventDefault();
     // currently only 1 user in userlist, but login verifies so that's ok for now
-    for (let i = 0; i < userList.length; i++) {
+    for (let i = 0; i < props.userList.length; i++) {
       if (
-        usernameTry === userList[i].userName &&
-        passwordTry === userList[i].password
+        usernameTry === props.userList[i].userName &&
+        passwordTry === props.userList[i].password
       ) {
         alert("Login Successful!");
 
-        let user = i
-        setUserLoggedIn(user);
+        let currentUser = props.userList[i];
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        // console.log(currentUser.hometown);
+        const getWeather = async (currentUser) => {
+            let city = currentUser.hometown;
+            let response = await fetch(
+              `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=3472f9dc0182851bae251704ca18a1fa`
+            );
+            let data = await response.json()
+            let currentWeather = data
+            localStorage.setItem('currentWeather', JSON.stringify(currentWeather));
+            console.log(currentWeather);
+        }
+        getWeather(currentUser)
+        while (true) {
+            if (localStorage.getItem('currentWeather') !== null) {
+                window.location.href = "/weather";
+                break;
+            }
+        }
         
-        window.location.href = "/weather";
         return;
       }
     }
@@ -30,8 +47,8 @@ const Login = ({ userList, setUserLoggedIn }) => {
   };
 
   return (
-    <div>
-      <form action="" onSubmit={handleSubmit}>
+    <div id="login">
+      <form id="logIn" action="" onSubmit={handleSubmit}>
         <label htmlFor="UserName">User Name</label>
         <input
           type="text"
