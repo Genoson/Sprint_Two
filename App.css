@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Meow+Script&display=swap");
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.25em;
+}
+
+.App {
+  text-align: center;
+}
+
+header {
+  
+  color: black;
+}
+
+header h1 {
+  font-size: 4rem;
+  font-family: "Meow Script", sans-serif;
+  height:10vh;
+}
+
+footer {
+  
+  height:20vh;
+  align-content: flex-end;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  grid-gap: 0.75rem;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: left;
+  grid-column: 1/3;
+  width: 90%;
+  margin: 0 auto;
+}
+
+form input {
+  font-size: 1.5rem;
+  grid-column: 1/4;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.submit {
+  font-size: 1.5rem;
+  grid-column: 2/3;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.clear {
+  font-size: 1.5rem;
+  grid-column: 3/4;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.checkOne,
+.checkThree {
+  grid-column: 2/3;
+}
+
+.checkTwo,
+.checkFour {
+  grid-column: 3/4;
+}
+
+body{
+  background: radial-gradient(circle at 50%, yellow, lightgoldenrodyellow 55%, #bdf 65%, lightblue 75%);
+}
+
+#login{
+  height:70vh;
+  padding-top:20vh;
+  
+}
+
+#weatherPage{
+  min-height:70vh;
+}
+
+#weatherAlert{
+  width:70vw;
+  margin:0 auto;
+  border:2px solid rgba(250,0,0,0.8);
+  border-radius: 16px;
+}
+
+#weatherAlert h3{
+  background-color: rgba(250,0,0,0.8);
+  border-radius: 16px 16px 0 0;
+}
+
+#weatherAlert p{
+  background-color: rgba(250,0,0,0.4);
+  border-radius: 0 0 16px 16px;
+  text-align: left;
+  text-indent: 1rem;
+  padding:.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  html{
+    font-size:24px;
+  }
+}
+  
