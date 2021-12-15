@@ -1,6 +1,9 @@
 import React from 'react'
 import {useState} from 'react'
 
+// allows the user to register a new user account
+// receives addUser from App.js
+
 const Register = ({addUser}) => {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -11,6 +14,7 @@ const Register = ({addUser}) => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const handleSubmit = (e) => {
+        // handles the user registration form, adding the user to the database if filled out correctly
         e.preventDefault()
         if (userName === '' || password === '' || email === '' || firstname === '' || lastname === '' || hometown === '') {
             alert('Please fill out all fields')
@@ -53,7 +57,7 @@ const Register = ({addUser}) => {
                 <label htmlFor="ConfirmPassword">Confirm Password</label>
                 <input type="text" name="ConfirmPassword" id="ConfirmPassword" onChange={(e)=>setConfirmPassword(e.target.value)}/>
                 <input className="submit" type="submit" value="Register" />
-                <input className="clear" type="submit" value="Clear" />
+                {/* <input className="clear" type="submit" value="Clear" /> */}
             </form>
         </div>
     )

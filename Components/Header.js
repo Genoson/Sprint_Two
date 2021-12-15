@@ -1,15 +1,25 @@
 import React from 'react'
+import Logout from './Logout'
+import {useLocation } from 'react-router-dom'
+import Home  from './Home'
 
+// Header, consistent across all pages
+// logo is just a fancy typeface "meowscript"
+// nav is a log out button and *refresh* button if developed
 
-const Header = () => {
-    console.log(window.location.href)
+const Header = (props) => {
+
+    const here = useLocation()
+    console.log(here)
     return (
         
         <header>
-            <div>
+            
             <h1>uWeather</h1>
-            {window.location.href==="http://localhost:3002/" ? null:<h3>There will be navigation elements here</h3>}
-            </div>
+
+            <nav>
+            {here.pathname==="/"? null: here.pathname==="/register" ? <Home />:<Logout/>}
+            </nav>
         </header>
     )
 }

@@ -8,13 +8,14 @@ import Register from "./Pages/Register";
 import Weather from "./Pages/Weather";
 import Settings from "./Pages/Settings";
 
-// Local storage craps out periodically?
+// the main bulk and router of my web app
+
 
 function App() {
   const [userList, setUserList] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState([]);
 
   useEffect(() => {
+    // gets user data from local storage
     const userList = JSON.parse(localStorage.getItem("userList"));
     if (userList === null) {
       setUserList([{ userName: "admin", password: "admin" }]);
@@ -29,6 +30,7 @@ function App() {
   }, [userList]);
 
   const addUser = (user) => {
+    // adds a new user to the userList
     setUserList([...userList, user]);
     localStorage.setItem("userList", JSON.stringify(userList));
   };
@@ -41,13 +43,13 @@ function App() {
           <Route
             path="/"
             element={
-              <Login userList={userList} setUserLoggedIn={setUserLoggedIn} />
+              <Login userList={userList} />
             }
           />
           <Route path="/register" element={<Register addUser={addUser} />} />
           <Route
             path="/weather"
-            element={<Weather userLoggedIn={userLoggedIn} userList={userList} />}
+            element={<Weather userList={userList} />}
           />
           <Route path="/settings" element={<Settings />} />
         </Routes>

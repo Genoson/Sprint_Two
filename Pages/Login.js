@@ -2,9 +2,14 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
+// the log in page is defined here
+// verifies the users credentials and forwards them to the weather page
+// link to register included
 const Login = (props) => {
   const [usernameTry, setUsernameTry] = useState("");
   const [passwordTry, setPasswordTry] = useState("");
+
+  
 
   const handleSubmit = (e) => {
     /**
@@ -24,6 +29,7 @@ const Login = (props) => {
 
         let currentUser = props.userList[i];
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        
         window.location.href = "/weather";
         return;
       }   
