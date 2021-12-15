@@ -2,36 +2,44 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const Login = ({ userList, setUserLoggedIn }) => {
+// the log in page is defined here
+// verifies the users credentials and forwards them to the weather page
+// link to register included
+const Login = (props) => {
   const [usernameTry, setUsernameTry] = useState("");
   const [passwordTry, setPasswordTry] = useState("");
 
+  
+
   const handleSubmit = (e) => {
-    console.log(userList);
-    console.log(usernameTry);
-    console.log(passwordTry);
+    /**
+     * This function handles the submit of the login information form
+     *  it will check if the user name and password belong to a user in the userList in local storage
+     * if they do it will set the currentUser in local storage to the user logging in 
+     * and then redirect the user to the weather feed page
+     */
     e.preventDefault();
-    // currently only 1 user in userlist, but login verifies so that's ok for now
-    for (let i = 0; i < userList.length; i++) {
+    
+    for (let i = 0; i < props.userList.length; i++) {
       if (
-        usernameTry === userList[i].userName &&
-        passwordTry === userList[i].password
+        usernameTry === props.userList[i].userName &&
+        passwordTry === props.userList[i].password
       ) {
         alert("Login Successful!");
 
-        let user = i
-        setUserLoggedIn(user);
+        let currentUser = props.userList[i];
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
         
         window.location.href = "/weather";
         return;
-      }
+      }   
     }
     alert("Login Failed!");
   };
 
   return (
-    <div>
-      <form action="" onSubmit={handleSubmit}>
+    <div id="login">
+      <form id="logIn" action="" onSubmit={handleSubmit}>
         <label htmlFor="UserName">User Name</label>
         <input
           type="text"

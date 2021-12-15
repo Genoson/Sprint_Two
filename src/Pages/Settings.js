@@ -1,5 +1,8 @@
 import React from "react";
 
+// page not used in final version
+// beyond the scope of this sprint
+
 const Settings = () => {
   return (
     <div>
