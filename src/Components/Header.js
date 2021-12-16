@@ -18,7 +18,7 @@ const Header = (props) => {
             <h1>uWeather</h1>
 
             <nav>
-            {here.pathname==="/"? null: here.pathname==="/register" ? <Home />:<Logout/>}
+            {here.pathname==="/"? null: here.pathname==="/register" ? <Home />: here.pathname === "/weather"?<Logout/>: <Home/>}
             </nav>
         </header>
     )

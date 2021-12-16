@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 // allows the user to register a new user account
 // receives addUser from App.js
@@ -12,6 +13,7 @@ const Register = ({addUser}) => {
     const [lastname, setLastname] = useState('')
     const [hometown, setHometown] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         // handles the user registration form, adding the user to the database if filled out correctly
@@ -26,7 +28,8 @@ const Register = ({addUser}) => {
         }
         
         addUser({userName, password, email, firstname, lastname, hometown})
-        window.location.href = '/'
+        // window.location.href = '/'
+        navigate('/')
 
         setUserName('')
         setPassword('')

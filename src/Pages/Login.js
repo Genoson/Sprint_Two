@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // the log in page is defined here
 // verifies the users credentials and forwards them to the weather page
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const [usernameTry, setUsernameTry] = useState("");
   const [passwordTry, setPasswordTry] = useState("");
-
+  const navigate = useNavigate();
   
 
   const handleSubmit = (e) => {
@@ -30,7 +30,8 @@ const Login = (props) => {
         let currentUser = props.userList[i];
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         
-        window.location.href = "/weather";
+        navigate("/weather");
+        // window.location.href = "/weather";
         return;
       }   
     }
